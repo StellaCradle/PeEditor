@@ -1,0 +1,17 @@
+add_rules("mode.debug", "mode.release")
+add_repositories("liteldev-repo https://github.com/LiteLDev/xmake-repo.git")
+
+add_requires("cxxopts v3.0.0")
+add_requires("fmt")
+add_requires("pe_bliss")
+add_requires("spdlog")
+
+target("PeEditor")
+    set_kind("binary")
+    set_languages("c++20")
+    set_symbols("debug")
+    add_files("src/**.cpp")
+    add_includedirs("src")
+    add_cxflags("/utf-8", "/EHa")
+    add_syslinks("wsock32", "comdlg32", "User32")
+    add_packages("pe_bliss", "cxxopts", "fmt", "spdlog")
